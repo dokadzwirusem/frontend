@@ -76,14 +76,14 @@ const LocationFormContainer = ({
       const { lat, lon } = parse(location)
       const dataObject = {
         name,
-        type,
         operator,
         address,
+        lat: lat,
+        lon: lon,
+        type,
         opening_hours,
         phone,
         prepare_instruction,
-        lat: lat,
-        lon: lon,
       }
       console.log('dataObject: ', dataObject);
 
