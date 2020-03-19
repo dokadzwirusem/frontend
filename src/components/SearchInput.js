@@ -45,9 +45,9 @@ const useStyles = makeStyles(theme => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: theme.palette.primary.light,
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.primary.light, 0.8),
     },
     width: 'auto',
   },
@@ -59,6 +59,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     width: theme.spacing(5),
+    color: 'white',
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(7),
     },

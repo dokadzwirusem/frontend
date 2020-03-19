@@ -64,7 +64,7 @@ const NavBar = ({
                   {!user.picture && `${user.given_name.charAt(0)}${user.family_name.charAt(0)}`}
                 </Avatar>
                 <Typography className={classes.name}>{user.name && user.name}</Typography>
-                <ArrowDropDown />
+                <ArrowDropDown className={classes.arrow} />
               </>
               : <Menu />
             }
@@ -79,6 +79,8 @@ const NavBar = ({
 const useStyles = makeStyles(theme => ({
   root: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: 'white',
+    color: theme.palette.grey[900],
   },
   logo: {
     marginRight: theme.spacing(2),
