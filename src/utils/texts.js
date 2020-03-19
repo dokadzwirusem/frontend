@@ -18,14 +18,8 @@ export default {
       lastUpdate: 'Ostatnia aktualizacja',
     },
     locationType: {
-      cabin: 'Chatka',
-      cabinFireplace: 'Chatka z paleniskiem',
-      shed: 'Wiata',
-      waterSource: 'Źródło',
-      cave: 'Jaskinia',
-      pasture: 'Paśnik',
-      raisedHide: 'Ambona',
-      tower: 'Wieża widokowa',
+      transport: 'Transport',
+      hospital: 'Szpital',
     },
     noResults: 'Nic nie znaleziono',
     connectionProblem: {
@@ -100,14 +94,8 @@ export default {
       lastUpdate: 'Last update',
     },
     locationType: {
-      cabin: 'Cabin',
-      cabinFireplace: 'Cabin with a fireplace',
-      shed: 'Shed',
-      waterSource: 'Water source',
-      cave: 'Cave',
-      pasture: 'Pasture',
-      raisedHide: 'Raised Hide',
-      tower: 'Observation Tower',
+      transport: 'Transport',
+      hospital: 'Hospital',
     },
     noResults: 'No results',
     connectionProblem: {

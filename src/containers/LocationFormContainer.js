@@ -63,29 +63,27 @@ const LocationFormContainer = ({
     /* eslint-disable camelcase */
     const {
       name,
-      description,
-      directions,
       type,
+      operator,
+      address,
+      opening_hours,
+      phone,
+      prepare_instruction,
       location,
-      water_exists,
-      water_comment,
-      fire_exists,
-      fire_comment,
     } = fields
 
     try {
       const { lat, lon } = parse(location)
       const dataObject = {
         name,
-        description,
-        directions,
+        type,
+        operator,
+        address,
+        opening_hours,
+        phone,
+        prepare_instruction,
         lat: lat,
         lon: lon,
-        type,
-        water_exists: water_exists || false,
-        water_comment: water_exists && water_comment ? water_comment : null,
-        fire_exists: fire_exists || false,
-        fire_comment: fire_exists && fire_comment ? fire_comment : null,
       }
       console.log('dataObject: ', dataObject);
 

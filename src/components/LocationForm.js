@@ -4,11 +4,9 @@ import Form from 'react-standalone-form'
 import {
   Input,
   FormButton,
-  Checkbox,
   FormActions,
 } from 'react-standalone-form-mui'
 import CoordinatesInput from './CoordinatesInput'
-import HintWrapper from './HintWrapper'
 import Text from './Text'
 import Select from './Select'
 import locationTypes from '../utils/locationTypes'
@@ -23,8 +21,6 @@ const LocationForm = ({
   isNew,
 }) => {
   const [loading, setLoading] = React.useState()
-  const [hasWater, setHasWater] = React.useState()
-  const [hasFire, setHasFire] = React.useState()
 
   const locationToString = () => {
     const { lat, lon } = locationData.location
@@ -38,116 +34,83 @@ const LocationForm = ({
     <Form
       fields={[
         'name',
-        'description',
-        'directions',
         'type',
+        'operator',
+        'address',
+        'opening_hours',
+        'phone',
+        'prepare_instruction',
         'location',
-        'water_exists',
-        'water_comment',
-        'fire_exists',
-        'fire_comment',
       ]}
       required={[
         'name',
-        'description',
-        'directions',
         'type',
         'location',
       ]}
-      callbackOnChange={fields => {
-        setHasWater(fields.water_exists)
-        setHasFire(fields.fire_exists)
-      }}
     >
 
-      <HintWrapper message={<Text id='markerForm.placeHint' />}>
-        <Input
-          name='name'
-          label={<Text id='markerForm.place' />}
-          min={5}
-          initialValue={locationData && locationData.name}
-        />
-      </HintWrapper>
-
-      <HintWrapper message={<Text id='markerForm.descriptionHint' />}>
-        <Input
-          name='description'
-          label={<Text id='markerForm.description' />}
-          min={40}
-          initialValue={locationData && locationData.description}
-          multiline
-        />
-      </HintWrapper>
-
-      <HintWrapper message={<Text id='markerForm.directionsHint' />}>
-        <Input
-          name='directions'
-          label={<Text id='locationInfo.directions' />}
-          min={20}
-          initialValue={locationData && locationData.directions}
-          multiline
-        />
-      </HintWrapper>
-
-      <HintWrapper message={<Text id='markerForm.typeHint' />}>
-        <Select
-          name='type'
-          label={<Text id='markerForm.type' />}
-          options={Object.entries(locationTypes).map(([value, label]) => ({
-            value,
-            label: <Text id={label} />,
-            icon: <img src={getIconUrl(value)} alt='' height='30' />,
-          }))}
-          initialValue={locationData && locationData.type}
-        />
-      </HintWrapper>
-
-      <HintWrapper message={<Text id='markerForm.locationHint' />}>
-        <CoordinatesInput
-          name='location'
-          label={<Text id='markerForm.location' />}
-          initialValue={locationData && locationToString()}
-          onChange={value => {
-            updateCurrentMarker(value)
-          }}
-        />
-      </HintWrapper>
-
-      <Checkbox
-        name='water_exists'
-        text={<Text id='locationInfo.waterAccess' />}
-        initialValue={locationData && locationData.water_exists}
+      <Input
+        name='name'
+        label={<Text id='markerForm.place' />}
+        min={5}
+        initialValue={locationData && locationData.name}
       />
 
-      {hasWater &&
-        <HintWrapper message={<Text id='markerForm.waterDescriptionHint' />}>
-          <Input
-            name='water_comment'
-            label={<Text id='markerForm.waterDescription' />}
-            min={40}
-            initialValue={locationData && locationData.water_comment}
-            multiline
-          />
-        </HintWrapper>
-      }
-
-      <Checkbox
-        name='fire_exists'
-        text={<Text id='locationInfo.fireAccess' />}
-        initialValue={locationData && locationData.fire_exists}
+      <Select
+        name='type'
+        label={<Text id='markerForm.type' />}
+        options={Object.entries(locationTypes).map(([value, label]) => ({
+          value,
+          label: <Text id={label} />,
+          icon: <img src={getIconUrl(value)} alt='' height='30' />,
+        }))}
+        initialValue={locationData && locationData.type}
       />
 
-      {hasFire &&
-        <HintWrapper message={<Text id='markerForm.fireDescriptionHint' />}>
-          <Input
-            name='fire_comment'
-            label={<Text id='markerForm.fireDescription' />}
-            min={40}
-            initialValue={locationData && locationData.fire_comment}
-            multiline
-          />
-        </HintWrapper>
-      }
+      <Input
+        name='operator'
+        label={<Text id='locationInfo.operator' />}
+        initialValue={locationData && locationData.operator}
+        multiline
+      />
+
+      <Input
+        name='address'
+        label={<Text id='locationInfo.address' />}
+        initialValue={locationData && locationData.address}
+        multiline
+      />
+
+      <Input
+        name='opening_hours'
+        label={<Text id='locationInfo.openingHours' />}
+        initialValue={locationData && locationData.opening_hours}
+        multiline
+      />
+
+      <Input
+        name='phone'
+        label={<Text id='locationInfo.phone' />}
+        initialValue={locationData && locationData.phone}
+        multiline
+      />
+
+      <Input
+        name='prepare_instruction'
+        label={<Text id='locationInfo.prepareInstruction' />}
+        initialValue={locationData && locationData.prepare_instruction}
+        multiline
+      />
+
+      <CoordinatesInput
+        name='location'
+        label={<Text id='markerForm.location' />}
+        initialValue={locationData && locationToString()}
+        onChange={value => {
+          updateCurrentMarker(value)
+        }}
+      />
+
 
       <FormActions>
         <Button onClick={() => cancel()}><Text id='cancel' /></Button>

@@ -6,8 +6,8 @@ import {
   ButtonGroup,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Dropzone from 'react-dropzone'
-import Loader from './Loader'
+// import Dropzone from 'react-dropzone'
+// import Loader from './Loader'
 import { roundLatLng, formatDate } from '../utils/helpers'
 // import locationTypes from '../utils/locationTypes'
 import Text from './Text'
@@ -16,11 +16,11 @@ import Text from './Text'
 const LocationInfo = ({
   loggedIn,
   selectedLocation,
-  onImageUpload,
+  // onImageUpload,
 }) => {
   console.log('selectedLocation: ', selectedLocation);
   const classes = useStyles()
-  const [imagesLoading, setImagesLoading] = React.useState()
+  // const [imagesLoading, setImagesLoading] = React.useState()
   const updatedAt = selectedLocation.last_modified_timestamp || selectedLocation.created_timestamp
   // const type = locationTypes[selectedLocation.type]
   return (
