@@ -16,6 +16,7 @@ import MapContainer from './containers/MapContainer'
 import SelectedLocationContainer from './containers/SelectedLocationContainer'
 import LocationFormContainer from './containers/LocationFormContainer'
 import LogsContainer from './containers/LogsContainer'
+import NearestPopupContainer from './containers/NearestPopupContainer'
 
 
 const App = ({ history, location: { pathname } }) => {
@@ -142,6 +143,8 @@ const App = ({ history, location: { pathname } }) => {
         <Route exact path='/polityka-prywatnosci' component={PolitykaPrywatnosci} />
         <Route exact path='/log' component={LogsContainer} />
       </Switch>
+
+      <NearestPopupContainer />
 
     </Layout>
   )
