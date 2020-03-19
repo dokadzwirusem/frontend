@@ -14,8 +14,8 @@
    viewBox="0 0 27.034361 27.034349"
    version="1.1"
    id="svg8536"
-   sodipodi:docname="safari-pinned-tab.svg"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="favicon.svg">
   <defs
      id="defs8530" />
   <sodipodi:namedview
@@ -29,7 +29,7 @@
      inkscape:cx="118.94704"
      inkscape:cy="57.425518"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer9"
      showgrid="false"
      inkscape:window-width="1914"
      inkscape:window-height="1015"
@@ -53,8 +53,6 @@
      id="layer9"
      inkscape:label="Layer 2">
     <rect
-       inkscape:export-xdpi="29.870001"
-       inkscape:export-ydpi="29.870001"
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.05291667;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect9097"
        width="27.214285"
@@ -70,7 +68,7 @@
     <path
        d="m 120.03441,187.89087 h 6.46162 v 6.46163 c 0,1.94854 1.57924,3.52777 3.52778,3.52777 1.94717,0 3.52777,-1.57923 3.52777,-3.52777 v -6.46163 h 6.46163 c 1.94717,0 3.52778,-1.58061 3.52778,-3.52777 0,-1.94855 -1.58061,-3.52779 -3.52778,-3.52779 h -6.46163 v -6.46161 c 0,-1.94855 -1.5806,-3.52778 -3.52777,-3.52778 -1.94854,0 -3.52778,1.57923 -3.52778,3.52778 v 6.46161 h -6.46162 c -1.94855,0 -3.52778,1.57924 -3.52778,3.52779 0,1.94716 1.57923,3.52777 3.52778,3.52777 z m 0,0"
        id="path5968"
-       style="display:inline;fill:#000000;fill-opacity:1;stroke-width:0.35277775"
+       style="display:inline;fill:#00017f;fill-opacity:1;stroke-width:0.35277775"
        inkscape:connector-curvature="0" />
   </g>
 </svg>
