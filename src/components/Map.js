@@ -17,7 +17,6 @@ import 'leaflet/dist/leaflet.css'
 import 'react-leaflet-markercluster/dist/styles.min.css'
 import ContextMenu from './ContextMenu'
 import { getIconUrl } from '../utils/helpers'
-import exportToKML from '../utils/exportToKML'
 
 
 const Map = React.forwardRef(({
@@ -211,13 +210,6 @@ const Map = React.forwardRef(({
                 : <GpsNotFixed className={classes.customControlIcon} />
               }
             </a>
-          </Control>
-          <Control position='topright' className='leaflet-bar'>
-            <a
-              className={classes.customControl}
-              onClick={() => exportToKML(props.points)}
-              disabled={!props.points || !props.points.length}
-            >KML</a>
           </Control>
         </>
       }

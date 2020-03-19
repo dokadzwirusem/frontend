@@ -5,7 +5,7 @@ import dataUriToBuffer from 'data-uri-to-buffer'
 import { useSnackbar } from 'notistack'
 import api from '../api'
 import { useAuth0 } from '../utils/auth0Provider'
-import LocationImages from '../components/LocationImages'
+// import LocationImages from '../components/LocationImages'
 import LocationInfo from '../components/LocationInfo'
 import Loader from '../components/Loader'
 import Text from '../components/Text'
@@ -85,10 +85,10 @@ const SelectedLocationContainer = ({
       : error
         ? <div>Error!</div>
         : <>
-          <LocationImages
+          {/* <LocationImages
             images={location.images}
             id={id}
-          />
+          /> */}
           <LocationInfo
             selectedLocation={location}
             loggedIn={isLoggedIn}
