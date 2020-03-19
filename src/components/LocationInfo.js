@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 // import Dropzone from 'react-dropzone'
 // import Loader from './Loader'
 import { roundLatLng, formatDate } from '../utils/helpers'
-// import locationTypes from '../utils/locationTypes'
+import locationTypes from '../utils/locationTypes'
 import Text from './Text'
 
 
@@ -18,11 +18,10 @@ const LocationInfo = ({
   selectedLocation,
   // onImageUpload,
 }) => {
-  console.log('selectedLocation: ', selectedLocation);
   const classes = useStyles()
   // const [imagesLoading, setImagesLoading] = React.useState()
   const updatedAt = selectedLocation.last_modified_timestamp || selectedLocation.created_timestamp
-  // const type = locationTypes[selectedLocation.type]
+  const type = locationTypes[selectedLocation.type]
   return (
     <div className={classes.root}>
       <div className={classes.main}>
@@ -34,7 +33,7 @@ const LocationInfo = ({
           color='textSecondary'
           gutterBottom
         >
-          {selectedLocation && selectedLocation.type} | {roundLatLng(selectedLocation.location.lat)}, {roundLatLng(selectedLocation.location.lon)}
+          {type && <Text id={type} />} | {roundLatLng(selectedLocation.location.lat)}, {roundLatLng(selectedLocation.location.lon)}
         </Typography>
 
         <Typography
