@@ -56,7 +56,7 @@ const NavBar = ({
           >{language ? language.toUpperCase() : ''}</Dropdown>
         }
         {loading
-          ? <Loader />
+          ? <Loader dark />
           : <Dropdown items={links}>
             {isLoggedIn
               ? <>

@@ -17,7 +17,8 @@ const NavBarContainer = ({ setSearchResults, history }) => {
     loginWithRedirect,
     user,
     isLoggedIn,
-    isModerator,
+    // isModerator,
+    userOwnedLocation,
     logout,
   } = useAuth0()
 
@@ -33,6 +34,10 @@ const NavBarContainer = ({ setSearchResults, history }) => {
 
   const links = [
     // ...isModerator ? [{ label: <Text id='administration' />, url: '/log' }] : [],
+    ...userOwnedLocation ? [{
+      label: <Text id='goToMyLocation' />,
+      url: `/location/${userOwnedLocation}`,
+    }] : [],
     ...isLoggedIn ? [{
       label: <><Text id='language' />: {language.toUpperCase()}</>,
       callback: () => setLanguageSwitch(true),

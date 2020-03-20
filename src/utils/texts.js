@@ -73,6 +73,7 @@ export default {
     informations: 'Informacje',
     termsAndConditions: 'Regulamin',
     privacyPolicy: 'Polityka prywatności',
+    goToMyLocation: 'Pokaż mój punkt',
   },
 
 
@@ -150,5 +151,6 @@ export default {
     informations: 'Informations',
     termsAndConditions: 'Terms and conditions',
     privacyPolicy: 'Privacy policy',
+    goToMyLocation: 'Go to my location',
   },
 }
