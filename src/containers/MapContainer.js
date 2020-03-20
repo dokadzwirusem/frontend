@@ -21,6 +21,7 @@ const MapContainer = React.forwardRef((props, ref) => {
     isLoggedIn,
     setStoredPosition,
     getStoredPosition,
+    isModerator,
   } = useAuth0()
 
   const loadMapMarkers = async bounds => {
@@ -86,6 +87,7 @@ const MapContainer = React.forwardRef((props, ref) => {
       currentLocation={location}
       center={initalPosition && initalPosition.center}
       zoom={initalPosition && initalPosition.zoom}
+      isModerator={isModerator}
       {...props}
       ref={mapRef}
     />

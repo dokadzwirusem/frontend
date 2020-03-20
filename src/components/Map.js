@@ -170,7 +170,7 @@ const Map = React.forwardRef(({
           }}
         />
       }
-      {activeMarker && contextMenu &&
+      {activeMarker && contextMenu && props.isModerator &&
         <Popup
           position={activeMarker}
           closeButton={false}
