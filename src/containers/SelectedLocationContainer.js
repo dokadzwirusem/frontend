@@ -18,7 +18,10 @@ const SelectedLocationContainer = ({
   history,
 }) => {
   const { params: { id } } = match
-  const { isLoggedIn } = useAuth0()
+  const {
+    isModerator,
+    userOwnedLocation,
+  } = useAuth0()
   const { enqueueSnackbar } = useSnackbar()
   const [location, setLocation] = React.useState()
   const [loading, setLoading] = React.useState(true)
@@ -91,8 +94,8 @@ const SelectedLocationContainer = ({
           /> */}
           <LocationInfo
             selectedLocation={location}
-            loggedIn={isLoggedIn}
             // onImageUpload={files => onImageUpload(files)}
+            canEdit={isModerator || userOwnedLocation === location.id}
           />
         </>
   )

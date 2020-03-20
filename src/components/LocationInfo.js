@@ -14,9 +14,9 @@ import Text from './Text'
 
 
 const LocationInfo = ({
-  loggedIn,
   selectedLocation,
   // onImageUpload,
+  canEdit,
 }) => {
   const classes = useStyles()
   // const [imagesLoading, setImagesLoading] = React.useState()
@@ -76,7 +76,7 @@ const LocationInfo = ({
             color='textSecondary'
           ><Text id='locationInfo.lastUpdate' />: {formatDate(updatedAt)}</Typography>
         }
-        {loggedIn &&
+        {canEdit &&
           <ButtonGroup
             size='small'
             variant='text'
