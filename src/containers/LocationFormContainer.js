@@ -10,7 +10,6 @@ import { useAuth0 } from '../utils/auth0Provider'
 
 
 const LocationFormContainer = ({
-  cachedLocation,
   setCachedLocation,
   refreshMap,
   isNew,
@@ -30,10 +29,6 @@ const LocationFormContainer = ({
       enqueueSnackbar('Dodawanie lub edycja lokalizacji wymaga bycia zalogowanym.', { variant: 'warning' })
     }
   }, [loadingAuth])
-
-  React.useEffect(() => {
-    setLocation(cachedLocation)
-  }, [cachedLocation])
 
   // Use cached location data if avaliable, otherwise load data from endpoint.
   React.useEffect(() => {
@@ -67,12 +62,12 @@ const LocationFormContainer = ({
       opening_hours,
       phone,
       prepare_instruction,
-      location,
+      location: locationField,
       owned_by,
     } = fields
 
     try {
-      const { lat, lon } = parse(location)
+      const { lat, lon } = parse(locationField)
       const dataObject = {
         name,
         operator,
@@ -96,11 +91,10 @@ const LocationFormContainer = ({
         enqueueSnackbar(<Text id='notifications.newMarkerAdded' />, { variant: 'success' })
       } else {
         // Updating exisitng marker.
-        const { id } = cachedLocation
         const { data } = await api.post('modify_point', { id, ...dataObject })
         setLocation(data)
         setCachedLocation(data)
-        history.push(`/location/${data.id}`)
+        history.push(`/location/${id}`)
         enqueueSnackbar(<Text id='notifications.markerUpdated' />, { variant: 'success' })
       }
       refreshMap()

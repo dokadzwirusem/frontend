@@ -50,8 +50,10 @@ const LocationInfo = ({
           variant='body1'
           gutterBottom
         >
-          <strong><Text id='locationInfo.phone' />:</strong> {selectedLocation.phone.split(',').map(phone =>
-            <><a href={`tel:${phone}`}>{phone}</a><br /></>
+          <strong><Text id='locationInfo.phone' />:</strong> {selectedLocation.phone.split(',').map((phone, index) =>
+            <React.Fragment key={index}>
+              <a href={`tel:${phone}`}>{phone}</a><br />
+            </React.Fragment>
           )}
         </Typography>
 
@@ -82,6 +84,7 @@ const LocationInfo = ({
             variant='text'
             align='right'
           >
+          {console.log('selectedLocation: ', selectedLocation)}
             <Button
               component={Link}
               to={`/location/${selectedLocation.id}/edit`}

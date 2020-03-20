@@ -80,9 +80,10 @@ export const Auth0Provider = ({
     if (!loading && user) {
       const handleAsync = async () => {
         try {
-          const { data } = await api.post('get_my_points')
-          console.log('data: ', data)
-          setUserOwnedLocation(data)
+          const { data: { points } } = await api.post('get_my_points')
+          if (points.length) {
+            setUserOwnedLocation(points[0].id)
+          }
         } catch (err) {
           console.error(err)
         }
