@@ -84,7 +84,6 @@ const LocationInfo = ({
             variant='text'
             align='right'
           >
-          {console.log('selectedLocation: ', selectedLocation)}
             <Button
               component={Link}
               to={`/location/${selectedLocation.id}/edit`}
