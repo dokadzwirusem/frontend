@@ -17,10 +17,10 @@ const NearestPopupContainer = () => {
         try {
           const [lat, lon] = location
           setIsOpen(true)
-          const { data: { points } } = await api.post('get_nearest', {
+          const { data: { transport, hospital } } = await api.post('get_nearest', {
             location: { lat, lon },
           })
-          const [transport, hospital] = points
+          // const [transport, hospital] = points
           setNearestHospital(hospital)
           setNearestTransport(transport)
         } catch (err) {
