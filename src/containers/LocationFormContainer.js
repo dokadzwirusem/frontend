@@ -37,14 +37,12 @@ const LocationFormContainer = ({
 
   // Use cached location data if avaliable, otherwise load data from endpoint.
   React.useEffect(() => {
-    if (cachedLocation) {
-      setLocation(cachedLocation)
-      setLoading(false)
-    } else {
+    if (!loadingAuth) {
       if (id) {
         const handleAsync = async () => {
           try {
-            const { data } = await api.post('get_point', { id })
+            const action = isModerator ? api.put : api.post
+            const { data } = await action('get_point', { id })
             setLocation(data)
             setCachedLocation(data)
           } catch (error) {
@@ -57,7 +55,7 @@ const LocationFormContainer = ({
         setLoading(false)
       }
     }
-  }, [])
+  }, [loadingAuth])
 
   const onSubmitLocation = async fields => {
     /* eslint-disable camelcase */
