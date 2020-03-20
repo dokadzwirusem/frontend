@@ -32,7 +32,7 @@ const NavBarContainer = ({ setSearchResults, history }) => {
   }
 
   const links = [
-    ...isModerator ? [{ label: <Text id='administration' />, url: '/log' }] : [],
+    // ...isModerator ? [{ label: <Text id='administration' />, url: '/log' }] : [],
     ...isLoggedIn ? [{
       label: <><Text id='language' />: {language.toUpperCase()}</>,
       callback: () => setLanguageSwitch(true),
