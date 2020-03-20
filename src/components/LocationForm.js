@@ -19,6 +19,7 @@ const LocationForm = ({
   updateCurrentMarker,
   cancel,
   isNew,
+  isModerator,
 }) => {
   const [loading, setLoading] = React.useState()
 
@@ -41,6 +42,7 @@ const LocationForm = ({
         'phone',
         'prepare_instruction',
         'location',
+        'owned_by',
       ]}
       required={[
         'name',
@@ -110,6 +112,15 @@ const LocationForm = ({
           updateCurrentMarker(value)
         }}
       />
+
+      {isModerator &&
+        <Input
+          name='owned_by'
+          label={<Text id='markerForm.assignedUserId' />}
+          initialValue={locationData && locationData.owned_by}
+          multiline
+        />
+      }
 
 
       <FormActions>

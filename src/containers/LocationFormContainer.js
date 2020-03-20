@@ -18,7 +18,7 @@ const LocationFormContainer = ({
   match,
 }) => {
   const { params: { id } } = match
-  const { isLoggedIn, loading: loadingAuth } = useAuth0()
+  const { isLoggedIn, loading: loadingAuth, isModerator } = useAuth0()
   const [location, setLocation] = React.useState()
   const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState()
@@ -70,6 +70,7 @@ const LocationFormContainer = ({
       phone,
       prepare_instruction,
       location,
+      owned_by,
     } = fields
 
     try {
@@ -84,6 +85,7 @@ const LocationFormContainer = ({
         opening_hours,
         phone,
         prepare_instruction,
+        owned_by: owned_by || location.owned_by,
       }
       console.log('dataObject: ', dataObject);
 
@@ -92,7 +94,7 @@ const LocationFormContainer = ({
         const { data } = await api.post('add_point', dataObject)
         setLocation(data)
         setCachedLocation(data)
-        history.push(`/location/${_id}`)
+        history.push(`/location/${data.id}`)
         enqueueSnackbar(<Text id='notifications.newMarkerAdded' />, { variant: 'success' })
       } else {
         // Updating exisitng marker.
@@ -100,7 +102,7 @@ const LocationFormContainer = ({
         const { data } = await api.post('modify_point', { id, ...dataObject })
         setLocation(data)
         setCachedLocation(data)
-        history.push(`/location/${_id}`)
+        history.push(`/location/${data.id}`)
         enqueueSnackbar(<Text id='notifications.markerUpdated' />, { variant: 'success' })
       }
       refreshMap()
@@ -131,6 +133,7 @@ const LocationFormContainer = ({
           }}
           cancel={() => history.goBack()}
           isNew={isNew}
+          isModerator={isModerator}
         />
   )
 }
