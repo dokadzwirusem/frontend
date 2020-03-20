@@ -95,6 +95,7 @@ const LocationForm = ({
         label={<Text id='locationInfo.phone' />}
         initialValue={locationData && locationData.phone}
         multiline
+        help='W przypadku wielu numeru telefonów, oddziel je przecinkiem.'
       />
 
       <Input

@@ -49,7 +49,11 @@ const LocationInfo = ({
         <Typography
           variant='body1'
           gutterBottom
-        ><strong><Text id='locationInfo.phone' />:</strong> {selectedLocation.phone}</Typography>
+        >
+          <strong><Text id='locationInfo.phone' />:</strong> {selectedLocation.phone.split(',').map(phone =>
+            <><a href={`tel:${phone}`}>{phone}</a><br /></>
+          )}
+        </Typography>
 
         <Typography
           variant='body1'
