@@ -31,7 +31,9 @@ export const Auth0Provider = ({
             setIsModerator(true)
           }
         }
+        alert('Alert0')
         const auth0FromHook = await createAuth0Client(initOptions)
+        alert(auth0FromHook)
         setAuth0(auth0FromHook)
 
         alert('Alert1')
