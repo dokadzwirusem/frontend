@@ -7,7 +7,7 @@ import history from '../history'
 
 const NearestPopupContainer = () => {
   const { location, loading, error } = useCurrentLocation()
-  const [isOpen, setIsOpen] = React.useState()
+  const [isOpen, setIsOpen] = React.useState(true)
   const [nearestHospital, setNearestHospital] = React.useState()
   const [nearestTransport, setNearestTransport] = React.useState()
 
@@ -16,7 +16,6 @@ const NearestPopupContainer = () => {
       const handleAsync = async () => {
         try {
           const [lat, lon] = location
-          setIsOpen(true)
           const { data: { transport, hospital } } = await api.post('get_nearest', {
             location: { lat, lon },
           })
@@ -46,8 +45,8 @@ const NearestPopupContainer = () => {
       ? <NearestPopup
         nearestHospital={handleNearestHospital}
         nearestTransport={handleNearestTransport}
-        isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        location={location}
       />
       : null
   )

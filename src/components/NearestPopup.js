@@ -2,39 +2,51 @@ import React from 'react'
 import { Button, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Modal from './Modal'
+import Text from './Text'
+import { GpsFixed } from '@material-ui/icons'
 
 
 const NearestPopup = ({
   nearestHospital,
   nearestTransport,
-  isOpen,
   onClose,
+  location,
 }) => {
   const classes = useStyles()
 
   return (
-    <Modal short isOpen={isOpen} onClose={onClose}>
+    <Modal short isOpen onClose={onClose}>
       <div className={classes.root}>
         <Typography variant='h3' gutterBottom>Dokąd z Wirusem</Typography>
         <Typography gutterBottom className={classes.paragraph}>
-          Witaj w aplikacji, która pomoże ci znaleźć najbliższe miejsce, do którego należy zgłosić się, aby otrzymać pomoc w przypadku zainfekowania wirusem COVID-19.
+          <Text id='welcomeText' />
         </Typography>
-        <div className={classes.buttons}>
-          <Button
-            variant='contained'
-            color='primary'
-            className={classes.button}
-            size='large'
-            onClick={nearestHospital}
-          >Pokaż najbliższy punkt</Button>
-          <Button
-            variant='contained'
-            color='secondary'
-            className={classes.button}
-            size='large'
-            onClick={nearestTransport}
-          >Pokaż najbliższy transport</Button>
-        </div>
+        {location
+          ? <div className={classes.buttons}>
+            <Button
+              variant='contained'
+              color='primary'
+              className={classes.button}
+              size='large'
+              onClick={nearestHospital}
+            >Pokaż najbliższy punkt</Button>
+            <Button
+              variant='contained'
+              color='secondary'
+              className={classes.button}
+              size='large'
+              onClick={nearestTransport}
+            >Pokaż najbliższy transport</Button>
+          </div>
+          : <>
+            <Typography gutterBottom variant='h3'>
+              <GpsFixed />
+            </Typography>
+            <Typography gutterBottom className={classes.paragraph}>
+              <Text id='pleaseEnableGeolocation' />
+            </Typography>
+          </>
+        }
       </div>
     </Modal>
   )
