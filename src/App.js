@@ -89,6 +89,7 @@ const App = ({ history, location: { pathname } }) => {
             <SelectedLocationContainer
               cachedLocation={cachedLocation}
               setCachedLocation={setCachedLocation}
+              spaceForBackToSearch={!!searchResults.length}
             />
             {searchResults.length
               ? <BackToSearch onClick={() => {

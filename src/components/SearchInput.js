@@ -72,6 +72,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(5),
     transition: theme.transitions.create('width'),
     width: '100%',
+    color: 'white',
     [theme.breakpoints.up('sm')]: {
       paddingLeft: theme.spacing(7),
       width: 200,
