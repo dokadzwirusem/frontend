@@ -137,11 +137,10 @@ const Map = React.forwardRef(({
       >
         {props.points && props.points.map(item => {
           const { location: { lat, lon }, type } = item
-
           return <Marker
             key={item.id}
             icon={new Icon({
-              iconUrl: getIconUrl(type, item.wiating_time),
+              iconUrl: getIconUrl(type, item.waiting_time),
               iconSize: [30, 30],
               iconAnchor: [15, 15],
             })}
