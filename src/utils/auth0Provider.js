@@ -20,7 +20,6 @@ export const Auth0Provider = ({
   const [user, setUser] = useState()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isModerator, setIsModerator] = useState(false)
-  const [userOwnedLocation, setUserOwnedLocation] = React.useState()
   const { enqueueSnackbar } = useSnackbar()
 
   useEffect(() => {
@@ -35,8 +34,10 @@ export const Auth0Provider = ({
         const auth0FromHook = await createAuth0Client(initOptions)
         setAuth0(auth0FromHook)
 
+        alert('Alert1')
         // Log in with redirect after successfull authentication
         if (window.location.search.includes('code=')) {
+          alert('Alert2')
           const { appState } = await auth0FromHook.handleRedirectCallback()
           window.history.replaceState(
             {},
@@ -56,7 +57,9 @@ export const Auth0Provider = ({
           enqueueSnackbar(<Text id='auth.loginSuccessful' />, { variant: 'success' })
         } else {
           // Restore user session from auth0.
+          alert('Alert3')
           const isAuthenticated = await auth0FromHook.isAuthenticated()
+          alert('Alert4')
           if (isAuthenticated) {
             const user = await auth0FromHook.getUser()
             const token = await auth0FromHook.getTokenSilently()
@@ -76,23 +79,6 @@ export const Auth0Provider = ({
     initAuth0()
   }, [])
 
-  React.useEffect(() => {
-    if (!loading && user) {
-      console.log('user: ', user)
-      // const handleAsync = async () => {
-      //   try {
-      //     const { data: { points } } = await api.post('get_my_points')
-      //     if (points.length) {
-      //       setUserOwnedLocation(points[0].id)
-      //     }
-      //   } catch (err) {
-      //     console.error(err)
-      //   }
-      // }
-      // handleAsync()
-    }
-  }, [loading])
-
   return (
     <Auth0Context.Provider
       value={{
@@ -100,7 +86,6 @@ export const Auth0Provider = ({
         isLoggedIn,
         isModerator,
         user,
-        userOwnedLocation,
         loginWithRedirect: p => {
           auth0.loginWithRedirect(p)
         },
