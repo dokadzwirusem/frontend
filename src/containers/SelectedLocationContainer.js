@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import Resizer from 'react-image-file-resizer'
-import dataUriToBuffer from 'data-uri-to-buffer'
+// import Resizer from 'react-image-file-resizer'
+// import dataUriToBuffer from 'data-uri-to-buffer'
 import { useSnackbar } from 'notistack'
 import api from '../api'
 import { useAuth0 } from '../utils/auth0Provider'
@@ -15,6 +15,7 @@ const SelectedLocationContainer = ({
   cachedLocation,
   setCachedLocation,
   spaceForBackToSearch,
+  refreshMap,
   match,
 }) => {
   const { params: { id } } = match
@@ -59,9 +60,9 @@ const SelectedLocationContainer = ({
         id,
         availability,
       })
-      console.log('data: ', data)
       setLocation(data)
       setCachedLocation(data)
+      refreshMap()
       enqueueSnackbar(<Text id='notifications.availabilityUpdated' />, { variant: 'success' })
     } catch (error) {
       console.error(error)

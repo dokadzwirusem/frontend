@@ -90,6 +90,7 @@ const App = ({ history, location: { pathname } }) => {
               cachedLocation={cachedLocation}
               setCachedLocation={setCachedLocation}
               spaceForBackToSearch={!!searchResults.length}
+              refreshMap={async () => { await mapRef.current.loadMapMarkers() }}
             />
             {searchResults.length
               ? <BackToSearch onClick={() => {
@@ -106,9 +107,7 @@ const App = ({ history, location: { pathname } }) => {
                 cachedLocation={cachedLocation}
                 setCachedLocation={setCachedLocation}
                 setActiveMarker={location => mapRef.current.setActiveMarker(location)}
-                refreshMap={async () => {
-                  await mapRef.current.loadMapMarkers()
-                }}
+                refreshMap={async () => { await mapRef.current.loadMapMarkers() }}
               />
             </ContentWrapper>
           </Route>
