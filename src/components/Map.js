@@ -130,7 +130,7 @@ const Map = React.forwardRef(({
           const count = cluster.getChildCount()
           return new DivIcon({
             html: count,
-            className: 'woodboard-cluster',
+            className: 'cluster-icon',
             iconSize: [40, 40],
           })
         }}
@@ -231,17 +231,18 @@ const useStyles = makeStyles(theme => ({
     '& .leaflet-marker-icon': {
       filter: 'drop-shadow(0 0 1px rgb(0,0,0))',
     },
-    '& .woodboard-cluster': {
-      backgroundColor: 'transparent',
-      backgroundImage: 'url(/woodboard.svg)',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
+    '& .cluster-icon': {
+      backgroundColor: 'white',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontWeight: 'bold',
-      color: '#522d19',
+      color: theme.palette.primary.main,
+      borderRadius: '50%',
+      borderColor: theme.palette.primary.main,
+      borderWidth: 4,
+      borderStyle: 'solid',
+      fontSize: 16,
       filter: 'drop-shadow(0 0 1px rgba(0,0,0,0.5))',
     },
   },
