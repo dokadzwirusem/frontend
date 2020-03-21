@@ -14,7 +14,7 @@ const MapContainer = React.forwardRef((props, ref) => {
   const [initalPosition, setInitalPosition] = React.useState()
   const { enqueueSnackbar } = useSnackbar()
   const { location, loading, error } = useCurrentLocation()
-  const defaultPosition = [50.39805, 16.844417] // The area of Polish mountains.
+  const defaultPosition = [52.062038, 19.480418] // The area of Polish mountains.
 
   const mapRef = React.useRef()
   const {
