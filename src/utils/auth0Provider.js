@@ -78,17 +78,18 @@ export const Auth0Provider = ({
 
   React.useEffect(() => {
     if (!loading && user) {
-      const handleAsync = async () => {
-        try {
-          const { data: { points } } = await api.post('get_my_points')
-          if (points.length) {
-            setUserOwnedLocation(points[0].id)
-          }
-        } catch (err) {
-          console.error(err)
-        }
-      }
-      handleAsync()
+      console.log('user: ', user)
+      // const handleAsync = async () => {
+      //   try {
+      //     const { data: { points } } = await api.post('get_my_points')
+      //     if (points.length) {
+      //       setUserOwnedLocation(points[0].id)
+      //     }
+      //   } catch (err) {
+      //     console.error(err)
+      //   }
+      // }
+      // handleAsync()
     }
   }, [loading])
 
