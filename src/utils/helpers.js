@@ -12,8 +12,7 @@ export const formatDate = timestamp => {
 }
 
 export function getIconUrl(type, waitingTime) {
-  console.log('waitingTime: ', waitingTime);
-  // Fallback to HUT icon, if invalid icon type is set.
+  // Fallback to hospital icon, if invalid icon type is set.
   const iconName = Object.keys(locationTypes).includes(type)
     ? type
     : 'hospital'

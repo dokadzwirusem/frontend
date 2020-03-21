@@ -55,13 +55,11 @@ const LocationInfo = ({
               icon: classes.chipIcon,
             }}
           />
-          {canEdit &&
-            <Button
-              color='primary'
-              size='small'
-              onClick={() => setShowWaitingSwitcher(true)}
-            ><Text id='change' /></Button>
-          }
+          <Button
+            color='primary'
+            size='small'
+            onClick={() => setShowWaitingSwitcher(true)}
+          ><Text id='change' /></Button>
           {showWaitingSwitcher &&
             <WaitingTimeSwitcher
               currentValue={selectedLocation.waiting_time}
