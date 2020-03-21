@@ -4,13 +4,16 @@ import {
   Typography,
   Button,
   ButtonGroup,
+  Chip,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { AccessTime } from '@material-ui/icons'
 // import Dropzone from 'react-dropzone'
 // import Loader from './Loader'
 import { roundLatLng, formatDate } from '../utils/helpers'
 import locationTypes from '../utils/locationTypes'
 import Text from './Text'
+import waitingTimes from '../utils/waitingTimes'
 
 
 const LocationInfo = ({
@@ -22,6 +25,8 @@ const LocationInfo = ({
   // const [imagesLoading, setImagesLoading] = React.useState()
   const updatedAt = selectedLocation.last_modified_timestamp || selectedLocation.created_timestamp
   const type = locationTypes[selectedLocation.type]
+  const waitingTime = waitingTimes[selectedLocation.waiting_time || 'short']
+
   return (
     <div className={classes.root}>
       <div className={classes.main}>
@@ -35,6 +40,24 @@ const LocationInfo = ({
         >
           {type && <Text id={type} />} | {roundLatLng(selectedLocation.location.lat)}, {roundLatLng(selectedLocation.location.lon)}
         </Typography>
+
+        <div className={classes.waitingTime}>
+          <Chip
+            icon={<AccessTime />}
+            label={<><Text id='waitingTime' />: <Text id={waitingTime.label} /> </>}
+            style={{ backgroundColor: waitingTime.color }}
+            classes={{
+              root: classes.chip,
+              icon: classes.chipIcon,
+            }}
+          />
+          {canEdit &&
+            <Button
+              color='primary'
+              size='small'
+            ><Text id='change' /></Button>
+          }
+        </div>
 
         <Typography
           variant='body1'
@@ -70,14 +93,6 @@ const LocationInfo = ({
       </div>
 
       <div className={classes.footer}>
-        {updatedAt &&
-          <Typography
-            component='div'
-            variant='caption'
-            align='right'
-            color='textSecondary'
-          ><Text id='locationInfo.lastUpdate' />: {formatDate(updatedAt)}</Typography>
-        }
         {canEdit &&
           <ButtonGroup
             size='small'
@@ -87,6 +102,8 @@ const LocationInfo = ({
             <Button
               component={Link}
               to={`/location/${selectedLocation.id}/edit`}
+              variant='contained'
+              color='primary'
             ><Text id='actions.edit' /></Button>
             {/* {imagesLoading
               ? <Button disabled><Text id='actions.addPhoto' /> <Loader /></Button>
@@ -109,6 +126,14 @@ const LocationInfo = ({
             } */}
           </ButtonGroup>
         }
+        {updatedAt &&
+          <Typography
+            component='div'
+            variant='caption'
+            align='right'
+            color='textSecondary'
+          ><Text id='locationInfo.lastUpdate' />: {formatDate(updatedAt)}</Typography>
+        }
       </div>
     </div>
   )
@@ -125,6 +150,19 @@ const useStyles = makeStyles(theme => ({
   },
   main: {
     flexGrow: 1,
+  },
+  chip: {
+    color: 'white',
+    marginRight: theme.spacing(1),
+  },
+  chipIcon: {
+    color: 'white',
+  },
+  waitingTime: {
+    display: 'flex',
+    alignItems: 'center',
+    justyfContent: 'flex-start',
+    marginBottom: theme.spacing(2),
   },
   footer: {
     display: 'flex',

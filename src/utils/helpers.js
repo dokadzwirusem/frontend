@@ -11,11 +11,13 @@ export const formatDate = timestamp => {
   return format(new Date(dateString), 'dd.MM.yyyy')
 }
 
-export function getIconUrl(type) {
+export function getIconUrl(type, wiatingTime) {
   // Fallback to HUT icon, if invalid icon type is set.
   const iconName = Object.keys(locationTypes).includes(type)
     ? type
-    : 'CABIN'
+    : 'hospital'
 
-  return '/location-icons/' + iconName.toLowerCase() + '.svg'
+  const time = wiatingTime || 'short'
+
+  return '/location-icons/' + iconName.toLowerCase() + '_' + time + '.svg'
 }

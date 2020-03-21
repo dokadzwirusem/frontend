@@ -1,6 +1,6 @@
 {
-  "short_name": "Wiating",
-  "name": "Wiating",
+  "short_name": "Dokąd z wirusem",
+  "name": "Dokąd z wirusem",
   "start_url": ".",
   "icons": [
     {
@@ -14,7 +14,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#4c4c42",
-  "background_color": "#4c4c42",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone"
 }

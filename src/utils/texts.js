@@ -79,6 +79,13 @@ export default {
     mainName: 'Dokąd z wirusem',
     nearestPoint: 'Pokaż najbliższy punkt',
     nearestTransport: 'Pokaż najbliższy transport',
+    waitingTime: 'Czas oczekiwania',
+    waitingTimes: {
+      short: 'Natychmiast',
+      moderate: 'Umiarkowany',
+      long: 'Długi',
+    },
+    change: 'Zmień',
   },
 
 
@@ -162,5 +169,12 @@ export default {
     mainName: 'Where to go with the virus',
     nearestPoint: 'Show nearest point',
     nearestTransport: 'Show nearest transport',
+    waitingTime: 'Waiting time',
+    waitingTimes: {
+      short: 'Immediately',
+      moderate: 'Moderate',
+      long: 'Long',
+    },
+    change: 'Change',
   },
 }
