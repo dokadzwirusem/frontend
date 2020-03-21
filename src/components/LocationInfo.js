@@ -41,15 +41,23 @@ const LocationInfo = ({
           {type && <Text id={type} />} | {roundLatLng(selectedLocation.location.lat)}, {roundLatLng(selectedLocation.location.lon)}
         </Typography>
 
-        <Chip
-          icon={<AccessTime />}
-          label={<><Text id='waitingTime' />: <Text id={waitingTime.label} /> </>}
-          style={{ backgroundColor: waitingTime.color }}
-          classes={{
-            root: classes.chip,
-            icon: classes.chipIcon,
-          }}
-        />
+        <div className={classes.waitingTime}>
+          <Chip
+            icon={<AccessTime />}
+            label={<><Text id='waitingTime' />: <Text id={waitingTime.label} /> </>}
+            style={{ backgroundColor: waitingTime.color }}
+            classes={{
+              root: classes.chip,
+              icon: classes.chipIcon,
+            }}
+          />
+          {canEdit &&
+            <Button
+              color='primary'
+              size='small'
+            ><Text id='change' /></Button>
+          }
+        </div>
 
         <Typography
           variant='body1'
@@ -145,10 +153,16 @@ const useStyles = makeStyles(theme => ({
   },
   chip: {
     color: 'white',
-    marginBottom: theme.spacing(2),
+    marginRight: theme.spacing(1),
   },
   chipIcon: {
     color: 'white',
+  },
+  waitingTime: {
+    display: 'flex',
+    alignItems: 'center',
+    justyfContent: 'flex-start',
+    marginBottom: theme.spacing(2),
   },
   footer: {
     display: 'flex',

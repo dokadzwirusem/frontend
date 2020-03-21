@@ -83,6 +83,7 @@ export default {
       moderate: 'Umiarkowany',
       long: 'Długi',
     },
+    change: 'Zmień',
   },
 
 
@@ -170,5 +171,6 @@ export default {
       moderate: 'Moderate',
       long: 'Long',
     },
+    change: 'Change',
   },
 }
