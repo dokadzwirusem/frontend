@@ -143,7 +143,7 @@ const Map = React.forwardRef(({
             icon={new Icon({
               iconUrl: getIconUrl(type, item.wiating_time),
               iconSize: [30, 30],
-              iconAnchor: [15, 30],
+              iconAnchor: [15, 15],
             })}
             position={[lat, lon]}
             onClick={() => {
@@ -160,8 +160,8 @@ const Map = React.forwardRef(({
         <Marker
           icon={new Icon({
             iconUrl: '/location-icons/point.svg',
-            iconSize: [40, 40],
-            iconAnchor: [20, 40],
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
           })}
           zIndexOffset={1000}
           position={activeMarker}
