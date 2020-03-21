@@ -141,7 +141,7 @@ const Map = React.forwardRef(({
           return <Marker
             key={item.id}
             icon={new Icon({
-              iconUrl: getIconUrl(type),
+              iconUrl: getIconUrl(type, item.wiating_time),
               iconSize: [30, 30],
               iconAnchor: [15, 30],
             })}

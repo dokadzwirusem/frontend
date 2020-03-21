@@ -25,8 +25,8 @@ const LocationInfo = ({
   // const [imagesLoading, setImagesLoading] = React.useState()
   const updatedAt = selectedLocation.last_modified_timestamp || selectedLocation.created_timestamp
   const type = locationTypes[selectedLocation.type]
-  const waitingTime = waitingTimes['moderate']
-  console.log('waitingTime: ', waitingTime)
+  const waitingTime = waitingTimes[selectedLocation.waiting_time || 'short']
+
   return (
     <div className={classes.root}>
       <div className={classes.main}>
