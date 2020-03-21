@@ -55,6 +55,8 @@ export default {
       couldNotSavePhoto: 'Nie udało się zapisać zdjęcia.',
       wrongCoordsFormat: 'Niepoprawny format współrzędnych.',
       couldNotRestoreSession: 'Nie udało się uwierzytelnić. Spróbuj się wylogować i zalogować ponownie.',
+      availabilityUpdated: 'Czas oczekiwania zaktualizowany.',
+      couldNotUpdateAvailability: 'Nie udało się zaktualizować czasu oczekiwania.',
     },
     actions: {
       edit: 'Edytuj',
@@ -145,6 +147,8 @@ export default {
       couldNotSavePhoto: 'Could not save a photo.',
       wrongCoordsFormat: 'Wrong coordinations format.',
       couldNotRestoreSession: 'Could not authenticate. Try to log out and log in again.',
+      availabilityUpdated: 'Waiting time updated.',
+      couldNotUpdateAvailability: 'Could not update the waiting time.',
     },
     actions: {
       edit: 'Edit',

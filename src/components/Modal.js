@@ -44,13 +44,13 @@ const useStyles = makeStyles(theme => ({
   content: {
     position: 'relative',
     width: ({ wide, small }) => wide ? 1200 : small ? 320 : 900,
-    maxHeight: ({ small }) => small ? 160 : 'auto',
+    maxHeight: ({ small }) => small ? 170 : 'auto',
     marginTop: ({ short }) => short ? 30 : 0,
     marginBottom: ({ short }) => short ? 30 : 0,
     maxWidth: '100vw',
     flexGrow: 1,
     boxSizing: 'border-box',
-    padding: theme.spacing(5),
+    padding: ({ small }) => small ? theme.spacing(3) : theme.spacing(5),
     borderRadius: theme.shape.borderRadius,
     backgroundColor: theme.palette.grey[50],
     overflow: 'hidden',
@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
   },
   close: {
     position: 'absolute',
-    top: theme.spacing(1),
+    top: ({ small }) => small ? 0 : theme.spacing(1),
     right: theme.spacing(1),
     // backgroundColor: 'rgba(255, 255, 255, 0.67)',
     // '&:hover': {

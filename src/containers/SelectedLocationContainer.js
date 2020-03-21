@@ -16,7 +16,6 @@ const SelectedLocationContainer = ({
   setCachedLocation,
   spaceForBackToSearch,
   match,
-  history,
 }) => {
   const { params: { id } } = match
   const {
@@ -54,32 +53,19 @@ const SelectedLocationContainer = ({
     setLocation(cachedLocation)
   }, [cachedLocation])
 
-  const onImageUpload = async files => {
+  const waitingTimeCallback = async availability => {
     try {
-      const file = files[0]
-      await Resizer.imageFileResizer(
-        file,
-        1080, // Maximum width
-        1080, // Maximum height
-        'JPEG', // Format
-        80, // Quality 1-100
-        0, // Rotation
-        async uri => {
-          const decoded = dataUriToBuffer(uri)
-          const resizedFile = new File([decoded], file.name, { type: file.type })
-          const data = new FormData()
-          data.append('file', resizedFile)
-          const newData = await api.post(`add_image/${location.id}`, data)
-          console.log('response: ', newData)
-          setLocation(newData)
-          setCachedLocation(newData)
-          history.push(`/location/${_id}`)
-          enqueueSnackbar(<Text id='notifications.photoAdded' />, { variant: 'success' })
-        },
-      )
+      const { data } = await api.post('set_availability', {
+        id,
+        availability,
+      })
+      console.log('data: ', data)
+      setLocation(data)
+      setCachedLocation(data)
+      enqueueSnackbar(<Text id='notifications.availabilityUpdated' />, { variant: 'success' })
     } catch (error) {
       console.error(error)
-      enqueueSnackbar(<Text id='notifications.couldNotSavePhoto' />, { variant: 'error' })
+      enqueueSnackbar(<Text id='notifications.couldNotUpdateAvailability' />, { variant: 'error' })
     }
   }
 
@@ -98,6 +84,7 @@ const SelectedLocationContainer = ({
             // onImageUpload={files => onImageUpload(files)}
             canEdit={isModerator || userOwnedLocation === location.id}
             spaceForBackToSearch={spaceForBackToSearch}
+            waitingTimeCallback={waitingTimeCallback}
           />
         </>
   )

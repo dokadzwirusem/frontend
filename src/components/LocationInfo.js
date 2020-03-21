@@ -10,9 +10,10 @@ import { makeStyles } from '@material-ui/core/styles'
 import { AccessTime } from '@material-ui/icons'
 // import Dropzone from 'react-dropzone'
 // import Loader from './Loader'
+import Text from './Text'
+import WaitingTimeSwitcher from './WaitingTimeSwitcher'
 import { roundLatLng, formatDate } from '../utils/helpers'
 import locationTypes from '../utils/locationTypes'
-import Text from './Text'
 import waitingTimes from '../utils/waitingTimes'
 
 
@@ -21,8 +22,10 @@ const LocationInfo = ({
   // onImageUpload,
   canEdit,
   spaceForBackToSearch,
+  waitingTimeCallback,
 }) => {
   const classes = useStyles()
+  const [showWaitingSwitcher, setShowWaitingSwitcher] = React.useState()
   // const [imagesLoading, setImagesLoading] = React.useState()
   const updatedAt = selectedLocation.last_modified_timestamp || selectedLocation.created_timestamp
   const type = locationTypes[selectedLocation.type]
@@ -56,7 +59,17 @@ const LocationInfo = ({
             <Button
               color='primary'
               size='small'
+              onClick={() => setShowWaitingSwitcher(true)}
             ><Text id='change' /></Button>
+          }
+          {showWaitingSwitcher &&
+            <WaitingTimeSwitcher
+              currentValue={selectedLocation.waiting_time}
+              onChange={value => {
+                waitingTimeCallback(value)
+                setShowWaitingSwitcher(false)
+              }}
+            />
           }
         </div>
 
