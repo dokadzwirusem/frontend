@@ -9,7 +9,7 @@ import { LanguageContext } from '../utils/TranslationsProvider'
 
 const languages = ['pl', 'en']
 
-const NavBarContainer = ({ setSearchResults, history }) => {
+const NavBarContainer = ({ setSearchResults, goToLocation, history }) => {
   const [language, setLanguage] = React.useContext(LanguageContext)
   const [languageSwitch, setLanguageSwitch] = React.useState()
   const {
@@ -36,7 +36,7 @@ const NavBarContainer = ({ setSearchResults, history }) => {
     // ...isModerator ? [{ label: <Text id='administration' />, url: '/log' }] : [],
     ...userOwnedLocation ? [{
       label: <Text id='goToMyLocation' />,
-      url: `/location/${userOwnedLocation}`,
+      callback: () => goToLocation(userOwnedLocation),
     }] : [],
     ...isLoggedIn ? [{
       label: <><Text id='language' />: {language.toUpperCase()}</>,

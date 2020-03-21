@@ -37,10 +37,17 @@ const App = ({ history, location: { pathname } }) => {
 
   return (
     <Layout appBar={
-      <NavBarContainer setSearchResults={results => {
-        setSearchResults(results)
-        setCachedLocation(null)
-      }} />
+      <NavBarContainer
+        setSearchResults={results => {
+          setSearchResults(results)
+          setCachedLocation(null)
+        }}
+        goToLocation={async id => {
+          await history.push('/')
+          await setCachedLocation(null)
+          history.push(`/location/${id}`)
+        }}
+      />
     }>
 
       <LocationTab
