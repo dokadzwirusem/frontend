@@ -10,6 +10,7 @@ import { useAuth0 } from '../utils/auth0Provider'
 
 
 const LocationFormContainer = ({
+  cachedLocation,
   setCachedLocation,
   refreshMap,
   isNew,
@@ -29,6 +30,10 @@ const LocationFormContainer = ({
       enqueueSnackbar('Dodawanie lub edycja lokalizacji wymaga bycia zalogowanym.', { variant: 'warning' })
     }
   }, [loadingAuth])
+
+  React.useEffect(() => {
+    setLocation(cachedLocation)
+  }, [cachedLocation])
 
   // Use cached location data if avaliable, otherwise load data from endpoint.
   React.useEffect(() => {
