@@ -77,6 +77,12 @@ export default {
     pleaseEnableGeolocation: 'Potrzebujemy lokacji twojego urządzenia, aby wyświetlić najblisze punkty w Twojej okolicy.',
     welcomeText: 'Witaj w aplikacji, która pomoże ci znaleźć najbliższe miejsce, do którego należy zgłosić się, aby otrzymać pomoc w przypadku zauważenia u siebie symptomów COVID-19.',
     mainName: 'Dokąd z wirusem',
+    waitingTime: 'Czas oczekiwania',
+    waitingTimes: {
+      short: 'Natychmiast',
+      moderate: 'Umiarkowany',
+      long: 'Długi',
+    },
   },
 
 
@@ -158,5 +164,11 @@ export default {
     pleaseEnableGeolocation: 'We need a location of your device to show the neares points in your area.',
     welcomeText: 'Welcome in the app, that will help you to find the nearest place to go, to get help in case of noticing any COVID-19 symptoms.',
     mainName: 'Where to go with the virus',
+    waitingTime: 'Waiting time',
+    waitingTimes: {
+      short: 'Immediately',
+      moderate: 'Moderate',
+      long: 'Long',
+    },
   },
 }
