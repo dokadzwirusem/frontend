@@ -14,6 +14,7 @@ import Text from '../components/Text'
 const SelectedLocationContainer = ({
   cachedLocation,
   setCachedLocation,
+  spaceForBackToSearch,
   match,
   history,
 }) => {
@@ -96,6 +97,7 @@ const SelectedLocationContainer = ({
             selectedLocation={location}
             // onImageUpload={files => onImageUpload(files)}
             canEdit={isModerator || userOwnedLocation === location.id}
+            spaceForBackToSearch={spaceForBackToSearch}
           />
         </>
   )

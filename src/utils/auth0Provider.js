@@ -31,15 +31,11 @@ export const Auth0Provider = ({
             setIsModerator(true)
           }
         }
-        alert('Alert0')
         const auth0FromHook = await createAuth0Client(initOptions)
-        alert(auth0FromHook)
         setAuth0(auth0FromHook)
 
-        alert('Alert1')
         // Log in with redirect after successfull authentication
         if (window.location.search.includes('code=')) {
-          alert('Alert2')
           const { appState } = await auth0FromHook.handleRedirectCallback()
           window.history.replaceState(
             {},
@@ -59,9 +55,7 @@ export const Auth0Provider = ({
           enqueueSnackbar(<Text id='auth.loginSuccessful' />, { variant: 'success' })
         } else {
           // Restore user session from auth0.
-          alert('Alert3')
           const isAuthenticated = await auth0FromHook.isAuthenticated()
-          alert('Alert4')
           if (isAuthenticated) {
             const user = await auth0FromHook.getUser()
             const token = await auth0FromHook.getTokenSilently()

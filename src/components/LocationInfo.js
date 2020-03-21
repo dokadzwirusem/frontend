@@ -20,6 +20,7 @@ const LocationInfo = ({
   selectedLocation,
   // onImageUpload,
   canEdit,
+  spaceForBackToSearch,
 }) => {
   const classes = useStyles()
   // const [imagesLoading, setImagesLoading] = React.useState()
@@ -28,7 +29,7 @@ const LocationInfo = ({
   const waitingTime = waitingTimes[selectedLocation.waiting_time || 'short']
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={spaceForBackToSearch ? { paddingTop: 48 } : {}}>
       <div className={classes.main}>
         <Typography
           variant='h5'
