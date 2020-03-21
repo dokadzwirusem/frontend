@@ -6,6 +6,7 @@ import {
   TileLayer,
   ZoomControl,
   ScaleControl,
+  Tooltip,
 } from 'react-leaflet'
 import Control from 'react-leaflet-control'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -150,7 +151,9 @@ const Map = React.forwardRef(({
               setContextMenu(null)
               setActiveMarker([lat, lon])
             }}
-          />
+          >
+            <Tooltip>{item.name}<br />{item.phone && `tel. ${item.phone}`}</Tooltip>
+          </Marker>
         })}
       </MarkerClusterGroup>
       {activeMarker &&
