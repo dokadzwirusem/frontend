@@ -75,8 +75,10 @@ export default {
     privacyPolicy: 'Polityka prywatności',
     goToMyLocation: 'Pokaż mój punkt',
     pleaseEnableGeolocation: 'Potrzebujemy lokacji twojego urządzenia, aby wyświetlić najblisze punkty w Twojej okolicy.',
-    welcomeText: 'Witaj w aplikacji, która pomoże ci znaleźć najbliższe miejsce, do którego należy zgłosić się, aby otrzymać pomoc w przypadku zauważenia u siebie symptomów COVID-19.',
+    welcomeText: 'Witaj w aplikacji, która pomoże ci znaleźć najbliższe miejsce, do którego należy zgłosić się, aby otrzymać pomoc w przypadku zauważenia u siebie symptomów COVID-19. Dane: Narodowy Fundusz Zdrowia.',
     mainName: 'Dokąd z wirusem',
+    nearestPoint: 'Pokaż najbliższy punkt',
+    nearestTransport: 'Pokaż najbliższy transport',
   },
 
 
@@ -156,7 +158,9 @@ export default {
     privacyPolicy: 'Privacy policy',
     goToMyLocation: 'Go to my location',
     pleaseEnableGeolocation: 'We need a location of your device to show the neares points in your area.',
-    welcomeText: 'Welcome in the app, that will help you to find the nearest place to go, to get help in case of noticing any COVID-19 symptoms.',
+    welcomeText: 'Welcome in the app, that will help you to find the nearest place to go, to get help in case of noticing any COVID-19 symptoms. Data by National Health Fund.',
     mainName: 'Where to go with the virus',
+    nearestPoint: 'Show nearest point',
+    nearestTransport: 'Show nearest transport',
   },
 }

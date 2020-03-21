@@ -17,7 +17,7 @@ const NearestPopup = ({
   return (
     <Modal short isOpen onClose={onClose}>
       <div className={classes.root}>
-        <Typography variant='h3' gutterBottom>Dokąd z Wirusem</Typography>
+        <Typography variant='h3' gutterBottom>Dokąd z wirusem</Typography>
         <Typography gutterBottom className={classes.paragraph}>
           <Text id='welcomeText' />
         </Typography>
@@ -29,14 +29,14 @@ const NearestPopup = ({
               className={classes.button}
               size='large'
               onClick={nearestHospital}
-            >Pokaż najbliższy punkt</Button>
+            ><Text id='nearestPoint' /></Button>
             <Button
               variant='contained'
               color='secondary'
               className={classes.button}
               size='large'
               onClick={nearestTransport}
-            >Pokaż najbliższy transport</Button>
+            ><Text id='nearestTransport' /></Button>
           </div>
           : <>
             <Typography gutterBottom variant='h3'>
