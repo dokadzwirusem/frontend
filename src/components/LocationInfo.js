@@ -7,12 +7,12 @@ import {
   Chip,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { AccessTime } from '@material-ui/icons'
+import { Phone, AccessTime } from '@material-ui/icons'
 // import Dropzone from 'react-dropzone'
 // import Loader from './Loader'
 import Text from './Text'
 import WaitingTimeSwitcher from './WaitingTimeSwitcher'
-import { roundLatLng, formatDate } from '../utils/helpers'
+import { formatDate } from '../utils/helpers'
 import locationTypes from '../utils/locationTypes'
 import waitingTimes from '../utils/waitingTimes'
 
@@ -42,8 +42,26 @@ const LocationInfo = ({
           color='textSecondary'
           gutterBottom
         >
-          {type && <Text id={type} />} | {roundLatLng(selectedLocation.location.lat)}, {roundLatLng(selectedLocation.location.lon)}
+          {type && <Text id={type} />}
         </Typography>
+
+        <Typography
+          variant='body1'
+          gutterBottom
+        ><strong><Text id='locationInfo.phone' />:</strong></Typography>
+
+        {selectedLocation.phone.split(',').map((phone, index) =>
+          <Button
+            key={index}
+            variant='contained'
+            color='primary'
+            size='large'
+            component='a'
+            href={`tel:${phone}`}
+            className={classes.primaryButton}
+          ><Phone /> {phone}</Button>
+        )}
+
 
         <div className={classes.waitingTime}>
           <Chip
@@ -84,17 +102,6 @@ const LocationInfo = ({
         <Typography
           variant='body1'
           gutterBottom
-        >
-          <strong><Text id='locationInfo.phone' />:</strong> {selectedLocation.phone.split(',').map((phone, index) =>
-            <React.Fragment key={index}>
-              <a href={`tel:${phone}`}>{phone}</a><br />
-            </React.Fragment>
-          )}
-        </Typography>
-
-        <Typography
-          variant='body1'
-          gutterBottom
         ><strong><Text id='locationInfo.openingHours' />:</strong> {selectedLocation.opening_hours}</Typography>
 
         <Typography
@@ -105,46 +112,22 @@ const LocationInfo = ({
       </div>
 
       <div className={classes.footer}>
-        {canEdit &&
-          <ButtonGroup
-            size='small'
-            variant='text'
-            align='right'
-          >
-            <Button
-              component={Link}
-              to={`/location/${selectedLocation.id}/edit`}
-              variant='contained'
-              color='primary'
-            ><Text id='actions.edit' /></Button>
-            {/* {imagesLoading
-              ? <Button disabled><Text id='actions.addPhoto' /> <Loader /></Button>
-              : <Button>
-                <Dropzone onDrop={async files => {
-                  setImagesLoading(true)
-                  await onImageUpload(files)
-                  setImagesLoading(false)
-                }}>
-                  {({ getRootProps, getInputProps }) => (
-                    <section>
-                      <div {...getRootProps()}>
-                        <input {...getInputProps()} />
-                        <Text id='actions.addPhoto' />
-                      </div>
-                    </section>
-                  )}
-                </Dropzone>
-              </Button>
-            } */}
-          </ButtonGroup>
-        }
         {updatedAt &&
           <Typography
             component='div'
             variant='caption'
             align='right'
             color='textSecondary'
-          ><Text id='locationInfo.lastUpdate' />: {formatDate(updatedAt)}</Typography>
+          ><Text id='locationInfo.lastUpdate' />: {formatDate(updatedAt)} </Typography>
+        }
+        {canEdit &&
+          <Button
+            component={Link}
+            to={`/location/${selectedLocation.id}/edit`}
+            variant='contained'
+            color='secondary'
+            className={classes.edit}
+          ><Text id='actions.edit' /></Button>
         }
       </div>
     </div>
@@ -163,6 +146,10 @@ const useStyles = makeStyles(theme => ({
   main: {
     flexGrow: 1,
   },
+  primaryButton: {
+    width: '100%',
+    marginBottom: theme.spacing(1),
+  },
   chip: {
     color: 'white',
     marginRight: theme.spacing(1),
@@ -174,13 +161,19 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justyfContent: 'flex-start',
+    marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
   },
   footer: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
     marginTop: theme.spacing(2),
+  },
+  edit: {
+    marginLeft: theme.spacing(2),
   },
 }))
 
