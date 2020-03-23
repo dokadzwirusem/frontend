@@ -45,6 +45,17 @@ const LocationInfo = ({
           {type && <Text id={type} />} | {roundLatLng(selectedLocation.location.lat)}, {roundLatLng(selectedLocation.location.lon)}
         </Typography>
 
+        <Typography
+          variant='h6'
+          gutterBottom
+        >
+          <strong><Text id='locationInfo.phone' />:</strong> {selectedLocation.phone.split(',').map((phone, index) =>
+            <React.Fragment key={index}>
+              <a href={`tel:${phone}`}>{phone}</a><br />
+            </React.Fragment>
+          )}
+        </Typography>
+
         <div className={classes.waitingTime}>
           <Chip
             icon={<AccessTime />}
@@ -80,17 +91,6 @@ const LocationInfo = ({
           variant='body1'
           gutterBottom
         ><strong><Text id='locationInfo.address' />:</strong> {selectedLocation.address}</Typography>
-
-        <Typography
-          variant='body1'
-          gutterBottom
-        >
-          <strong><Text id='locationInfo.phone' />:</strong> {selectedLocation.phone.split(',').map((phone, index) =>
-            <React.Fragment key={index}>
-              <a href={`tel:${phone}`}>{phone}</a><br />
-            </React.Fragment>
-          )}
-        </Typography>
 
         <Typography
           variant='body1'
