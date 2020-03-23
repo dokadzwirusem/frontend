@@ -12,7 +12,7 @@ export default {
     locationInfo: {
       address: 'Adres',
       operator: 'Operator',
-      phone: 'Telefon',
+      phone: 'Telefon kontaktowy',
       openingHours: 'Godziny otwarcia',
       prepareInstruction: 'Informacje',
       lastUpdate: 'Ostatnia aktualizacja',
@@ -100,7 +100,7 @@ export default {
     locationInfo: {
       address: 'Address',
       operator: 'Operator',
-      phone: 'Phone',
+      phone: 'Contact phone number',
       openingHours: 'Opening hours',
       prepareInstruction: 'Information',
       lastUpdate: 'Last update',
